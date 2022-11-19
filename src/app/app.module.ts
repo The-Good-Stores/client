@@ -8,10 +8,20 @@ import { QuestionsComponent } from './questions/questions.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { UserModule } from './user/user.module';
+import { AdsModule } from './ads/ads.module';
 
 @NgModule({
   declarations: [AppComponent, QuestionsComponent, NavComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    UserModule,
+    AdsModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
