@@ -1,1 +1,162 @@
-<p>display works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- TODO: include head -->
+  </head>
+  <header>
+    <!-- TODO: include navbar -->
+    <link rel="stylesheet" href="/stylesheets/style.css" type="css" />
+  </header>
+
+  <body>
+    <div class="container mt-5 mb-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <div class="card">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="images p-3">
+                  <div class="text-center p-4">
+                    <img
+                      id="main-image"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
+                      width="250"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="product p-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex align-items-center">
+                      <a href="/ads">
+                        <i class="fa fa-long-arrow-left"></i>
+                        <span class="ml-1">Back</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mt-4 mb-3">
+                    <h5 class="text-uppercase">
+                      {{ ad?.title }}
+                    </h5>
+                    <div class="price d-flex flex-row align-items-center">
+                      <span class="text-success fs-5">
+                        {{ ad?.price | currency }}
+                      </span>
+                    </div>
+                    <p class="fs-4">
+                      Delivery Method:
+                      <span class="text-primary">{{ ad?.deliveryMethod }}</span>
+                    </p>
+                  </div>
+                  <p class="fs-4">{{ ad?.body }}</p>
+                  <p></p>
+                  <div
+                    *ngIf="user && user === ad?.username"
+                    class="d-flex gap-4"
+                  >
+                    <!-- Edit Button -->
+                    <div>
+                      <a
+                        href="/ads/edit/{{ ad?.adsId }}"
+                        class="btn btn-primary btn-xl rounded-pill"
+                      >
+                        Edit
+                      </a>
+                    </div>
+                    <!-- Disable / Activate Button -->
+                    <div>
+                      <a
+                        *ngIf="ad?.active; else showActivate"
+                        (click)="adsService.disableAd(ad!.adsId)"
+                        class="btn btn-danger btn-xl rounded-pill"
+                      >
+                        Disable
+                      </a>
+                      <ng-template #showActivate>
+                        <a
+                          (click)="adsService.activateAd(ad!.adsId)"
+                          class="btn btn-success btn-xl rounded-pill"
+                        >
+                          Activate
+                        </a>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Q&A -->
+              <section class="gradient-custom">
+                <div class="container my-5 py-5">
+                  <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-xl-8">
+                      <div class="card">
+                        <div class="card-body p-4">
+                          <h4 class="text-center mb-4 pb-2">
+                            Questions & Answers
+                          </h4>
+                          <!-- TODO: include questions -->
+                        </div>
+                      </div>
+                      <!-- Answer Form -->
+                      <div *ngIf="user && user === ad?.username">
+                        class="card-footer py-3 border-0"
+                        style="background-color: #f8f9fa" >
+                        <div
+                          class="card-footer py-3 border-0"
+                          style="background-color: #f8f9fa"
+                        >
+                          <div class="d-flex flex-start w-100">
+                            <img
+                              class="rounded-circle shadow-1-strong me-3"
+                              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                              alt="avatar"
+                              width="40"
+                              height="40"
+                            />
+                            <form
+                              class="form-outline w-100"
+                              action="/ads/<%= ad.adsId %>/leave-question"
+                              method="post"
+                            >
+                              <textarea
+                                class="form-control"
+                                id="question"
+                                name="question"
+                                rows="4"
+                                style="background: #fff"
+                              ></textarea>
+                              <label class="form-label" for="question"
+                                >Leave a comment</label
+                              >
+                              <div class="float-end mt-2 pt-1">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary btn-sm"
+                                >
+                                  Post comment
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-primary btn-sm"
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
