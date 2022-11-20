@@ -19,11 +19,11 @@ export class AdsService {
   }
   disableAd(adsId: string): Observable<any> {
     // TODO: Authentication
-    return this.http.get(`${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`);
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`, {});
   }
   activateAd(adsId: string): Observable<any> {
     // TODO: Authentication
-    return this.http.get(`${environment.apiUrl}/${this.baseUrl}/activate/${adsId}`);
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/activate/${adsId}`, {});
   }
   editAd(adsId: string, data: Ad): Observable<any> {
     // TODO: Authentication
