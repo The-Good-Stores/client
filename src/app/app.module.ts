@@ -25,4 +25,4 @@ import { AdsModule } from './ads/ads.module';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
