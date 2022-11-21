@@ -29,4 +29,8 @@ export class AdsService {
     // TODO: Authentication
     return this.http.put(`${environment.apiUrl}/${this.baseUrl}/${adsId}`, data);
   }
+  createAd(ad: Ad): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/create`, ad)
+  }
+
 }
