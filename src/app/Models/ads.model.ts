@@ -8,6 +8,6 @@ export default interface Ad {
   end: Date;
   deliveryMethod: string;
   active: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

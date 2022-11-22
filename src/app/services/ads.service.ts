@@ -27,10 +27,10 @@ export class AdsService {
   }
   editAd(adsId: string, data: Ad): Observable<any> {
     // TODO: Authentication
-    return this.http.put(`${environment.apiUrl}/${this.baseUrl}/${adsId}`, data);
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/update/${adsId}`, data);
   }
   createAd(ad: Ad): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/create`, ad)
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/post`, ad)
   }
 
 }

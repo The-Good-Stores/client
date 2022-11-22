@@ -5,7 +5,7 @@ import { EditComponent } from './edit/edit.component';
 import { PostComponent } from './post/post.component';
 import { ManageComponent } from './manage/manage.component';
 import { DisplayComponent } from './display/display.component';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { DisplayComponent } from './display/display.component';
     DisplayComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, 
+    FormsModule
   ]
 })
 export class AdsModule { }
