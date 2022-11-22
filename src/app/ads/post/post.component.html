@@ -14,11 +14,6 @@
                   <h2 class="text-uppercase text-center mb-5">
                     Hello, Post Your Used good!
                   </h2>
-                  <!-- <% if (!ad.adsId) { %>
-                    <form action="/ads/create" method="post">
-                  <% } else { %>
-                    <form action="/ads/edit/<%= ad.adsId %>" method="post">
-                   <% } %> -->
                    <form #postForm="ngForm" (ngSubmit)="post()">
                     <div class="form-outline mb-4">
                         <input
@@ -91,7 +86,6 @@
                         </button>
                       </div>
                    </form>
-                  <!-- </form> -->
                 </div>
               </div>
             </div>
