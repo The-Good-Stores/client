@@ -19,7 +19,7 @@
                   <% } else { %>
                     <form action="/ads/edit/<%= ad.adsId %>" method="post">
                    <% } %> -->
-                   <form #postForm="ngForm">
+                   <form #postForm="ngForm" (ngSubmit)="post()">
                     <div class="form-outline mb-4">
                         <input
                         #title="ngModel"

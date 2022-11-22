@@ -26,16 +26,16 @@ const routes: Routes = [
     component: AdsListComponent,
   },
   {
-    path: 'ads/:id',
-    component: DisplayComponent,
-  },
-  {
     path: 'ads/post',
     component: PostComponent,
   },
   {
+    path: 'ads/:id',
+    component: DisplayComponent,
+  },
+  {
     path: 'ads/edit/:id',
-    component: EditComponent,
+    component: PostComponent,
   },
 
 
