@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdsService } from 'src/app/services/ads.service';
 import Ad from 'src/app/Models/ads.model';
-import User from 'src/app/Models/user.model';
 import { ActivatedRoute } from '@angular/router';
-import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -13,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  ad?: Ad;
+  // ad?: Ad;
   user?: string = localStorage.getItem("username") ?? undefined;
 
   posting: boolean = true;
@@ -49,9 +47,12 @@ export class PostComponent implements OnInit {
     if(this.posting){
       this.postInfo.username = "test1";
       this.adsService.createAd(this.postInfo).subscribe((result) => console.log({result}))
-      this.router.navigate(['/'])
+      console.log(this.postInfo)
+      this.router.navigate([`/ads/${this.postInfo.adsId}`])
     }else{
       this.adsService.editAd(this.postInfo.adsId, this.postInfo).subscribe((result) => console.log({result}))
+      console.log(this.postInfo);
+      this.router.navigate([`/ads/${this.postInfo.adsId}`])
     }
     
   }
