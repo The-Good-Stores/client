@@ -9,7 +9,7 @@ import Ad from '../Models/ads.model';
 })
 export class AdsService {
   baseUrl = 'ads';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   //Get ALL ads from database
   getAds(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/${this.baseUrl}/all`);
@@ -19,18 +19,26 @@ export class AdsService {
   }
   disableAd(adsId: string): Observable<any> {
     // TODO: Authentication
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`, {});
+    return this.http.post(
+      `${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`,
+      {}
+    );
   }
   activateAd(adsId: string): Observable<any> {
     // TODO: Authentication
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/activate/${adsId}`, {});
+    return this.http.post(
+      `${environment.apiUrl}/${this.baseUrl}/activate/${adsId}`,
+      {}
+    );
   }
   editAd(adsId: string, data: Ad): Observable<any> {
     // TODO: Authentication
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/update/${adsId}`, data);
+    return this.http.post(
+      `${environment.apiUrl}/${this.baseUrl}/update/${adsId}`,
+      data
+    );
   }
   createAd(ad: Ad): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/post`, ad)
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/post`, ad);
   }
-
 }

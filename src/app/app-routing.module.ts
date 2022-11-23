@@ -5,6 +5,7 @@ import { DisplayComponent } from './ads/display/display.component';
 import { EditComponent } from './ads/edit/edit.component';
 import { PostComponent } from './ads/post/post.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   {
     path: 'ads/post',
     component: PostComponent,
+    // canActivate: [AuthGuard],
   },
   {
     path: 'ads/:id',
@@ -36,14 +38,12 @@ const routes: Routes = [
   {
     path: 'ads/edit/:id',
     component: PostComponent,
+    // canActivate: [AuthGuard],
   },
-
-
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
