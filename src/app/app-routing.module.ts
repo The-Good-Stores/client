@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdsListComponent } from './ads/ads-list/ads-list.component';
 import { DisplayComponent } from './ads/display/display.component';
-import { EditComponent } from './ads/edit/edit.component';
 import { PostComponent } from './ads/post/post.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
