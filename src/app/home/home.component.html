@@ -93,16 +93,16 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <p class="fe-5 fw-bolder">{{ ad?.title }}</p>
+                                <p class="fe-5 fw-bolder">{{ products?.title }}</p>
                                 <!-- Product price-->
-                                <p class="fe-6 text-success">{{ ad?.price | currency }}</p>
+                                <p class="fe-6 text-success">{{ products?.price | currency }}</p>
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <!--go to details-->
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto" href="/ads/{{ ad?.adsId }}">View</a>
+                                <a class="btn btn-outline-dark mt-auto" href="/ads/{{ products?.adsId }}">View</a>
                             </div>
                         </div>
                     </div>

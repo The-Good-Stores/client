@@ -16,8 +16,8 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     const adsId = this.route.snapshot.paramMap.get('adsId');
-    this.adsServices.getAd(adsId).subscribe(result => 
-        console.log(result.question))
+   // this.adsServices.getAd(adsId).subscribe(result => 
+   //     console.log(result.question))
 
   }
 

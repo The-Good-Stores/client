@@ -11,13 +11,17 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
   data: Ad[] = [];
-  ad?: Ad;
+  products?: Ad;
   user?: User | undefined;
   constructor(private adsService: AdsService, userService: UserService) { }
 
   ngOnInit(): void {
     this.adsService.getAds().subscribe(result => {
-
+    result.data.forEach((products: Ad) => {
+    if (products.active === true){
+      this.data.push(products);
+    }  
+    })
     });
   }
 }
