@@ -1,0 +1,142 @@
+<!-- Q&A -->
+<div class="gradient-custom">
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="card">
+          <div class="card-body p-4">
+            <div *ngIf="questions">
+              <h4 class="text-center mb-4 pb-2">Questions & Answers</h4>
+              <p>{{user.username}}</p>
+              <div *ngFor="let q of questions">
+                <div class="row">
+                  <div class="col">
+                    <div class="d-flex flex-start">
+                      <img
+                        class="rounded-circle shadow-1-strong me-3"
+                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                        alt="avatar"
+                        width="65"
+                        height="65"
+                      />
+                      <div class="flex-grow-1 flex-shrink-1 mb-3">
+                        <div>
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <p class="mb-3">
+                              anonymous
+                              <span class="small">
+                                {{ q.createdAt | date }}
+                              </span>
+                            </p>
+                          </div>
+                          <p class="small mb-1">
+                            {{ q.question }}
+                          </p>
+                          <div *ngIf="user.username === ad?.username">
+                            <form
+                              #answerForm="ngForm"
+                              class="form-outline w-100"
+                              (ngSubmit)="answerQuestion(q.questionId)"
+                            >
+                              <textarea
+                                [(ngModel)]="answer"
+                                class="form-control"
+                                id="answer"
+                                name="answer"
+                                rows="2"
+                              ></textarea>
+                              <button
+                                type="submit"
+                                class="btn btn-primary btn-sm m-2"
+                              >
+                                Answer
+                              </button>
+                            </form>
+                          </div>
+                          <!-- <% if  (user!= undefined && user.username === ad.username) { %> -->
+
+                          <!-- Reply Section -->
+                        </div>
+                        <!-- Answer -->
+                        <!-- <% if (question.answer) { %>                         -->
+                        <div *ngIf="q.answer">
+                          <div class="d-flex flex-start mt-4 mb-2">
+                            <img
+                              class="rounded-circle shadow-1-strong me-3"
+                              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                              alt="avatar"
+                              width="65"
+                              height="65"
+                            />
+                            <div class="flex-grow-1 flex-shrink-1">
+                              <div>
+                                <div
+                                  class="d-flex justify-content-between align-items-center"
+                                >
+                                  <p class="mb-1">
+                                    {{ ad?.username }}
+                                    <span class="small">{{
+                                      q.updatedAt | date
+                                    }}</span>
+                                  </p>
+                                </div>
+                                <p class="small mb-0">
+                                  {{ q.answer }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Answer Form -->
+        <div *ngIf="user.username != ad?.username">
+
+          <div
+            class="card-footer py-3 border-0"
+            style="background-color: #f8f9fa"
+          >
+            <div class="d-flex flex-start w-100">
+              <img
+                class="rounded-circle shadow-1-strong me-3"
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                alt="avatar"
+                width="40"
+                height="40"
+              />
+              <form
+                class="form-outline w-100"
+                #question="ngForm"
+                (ngSubmit)="submitQuestion()"
+              >
+                <textarea
+                  [(ngModel)]="questionForm"
+                  class="form-control"
+                  id="question"
+                  name="question"
+                  rows="4"
+                  style="background: #fff"
+                ></textarea>
+                <label class="form-label" for="question">Leave a comment</label>
+                <div class="float-end mt-2 pt-1">
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Post comment
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
