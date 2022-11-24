@@ -41,7 +41,10 @@
                 </div>
                 <p class="fs-4">{{ ad?.body }}</p>
                 <p></p>
-                <div *ngIf="user && user.username === ad?.username" class="d-flex gap-4">
+                <div
+                  *ngIf="user && user.username === ad?.username"
+                  class="d-flex gap-4"
+                >
                   <!-- Edit Button -->
                   <div>
                     <a
@@ -55,14 +58,14 @@
                   <div>
                     <a
                       *ngIf="ad?.active; else showActivate"
-                      (click)="adsService.disableAd(ad!.adsId)"
+                      (click)="disable()"
                       class="btn btn-danger btn-xl rounded-pill"
                     >
                       Disable
                     </a>
                     <ng-template #showActivate>
                       <a
-                        (click)="adsService.activateAd(ad!.adsId)"
+                        (click)="activate()"
                         class="btn btn-success btn-xl rounded-pill"
                       >
                         Activate
@@ -73,7 +76,7 @@
               </div>
             </div>
             <!-- Q&A -->
-            <app-questions></app-questions>
+            <app-questions [user]="user"></app-questions>
           </div>
         </div>
       </div>

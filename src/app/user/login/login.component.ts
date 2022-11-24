@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       .subscribe((result) => {
         console.log(result);
         if (result.success) {
-          this.userService.setUserInfo(result.user);
+          this.userService.setUserInfo(result.token);
           this.router.navigate([""]);
         } else {
           this.caution = result.status;

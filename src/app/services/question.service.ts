@@ -20,10 +20,9 @@ export class QuestionService {
     // )
   }
   answerQuestion(adsId: string, qid: string, answer: string): Observable<any> {
-
     return this.http.post(
       `${environment.apiUrl}/${this.baseUrl}/add-answer/${adsId}/${qid}`,
-      answer
+      {answer}
     );
     // return this.http.post(
     //   `http://localhost:8000/api/${this.baseUrl}/add-answer/${adsId}/${qid}`,
