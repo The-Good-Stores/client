@@ -10,8 +10,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  logo = "/assets/images/logo.png"
 
+  logo = "/assets/images/logo.png"
   data: Ad[] = [];
   products?: Ad;
   user?: User | undefined;
