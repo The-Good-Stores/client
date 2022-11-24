@@ -39,4 +39,7 @@ export class UserService {
     user = JSON.parse(localUser);
     return user;
   }
+  public clearUserInfo() {
+    localStorage.clear();
+  }
 }

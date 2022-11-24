@@ -15,7 +15,6 @@ export class QuestionService {
       question
     );
   }
-
   answerQuestion(adsId: string, qid: string, answer: string): Observable<any> {
     return this.http.post(
       `${environment.apiUrl}/${this.baseUrl}/add-answer/${adsId}/${qid}`,
