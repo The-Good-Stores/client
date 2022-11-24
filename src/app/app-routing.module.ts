@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'ads/post',
     component: PostComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'ads/:id',
@@ -37,12 +37,12 @@ const routes: Routes = [
   {
     path: 'ads/edit/:id',
     component: PostComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
