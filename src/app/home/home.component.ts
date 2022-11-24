@@ -10,20 +10,20 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  logo = "/assets/images/logo.png"
+  logo = '/assets/images/logo.png';
   data: Ad[] = [];
   products?: Ad;
-  user?: User | undefined;
-  constructor(private adsService: AdsService, userService: UserService) {}
-
+  user: User | undefined;
+  constructor(
+    private adsService: AdsService,
+    private userService: UserService
+  ) {}
   ngOnInit(): void {
-    this.adsService.getAds().subscribe((result) => {
-      result.data.forEach((products: Ad) => {
-        if (products.active === true) {
-          while (this.data.length < 8) {
-            this.data.push(products);
-          }
+    this.user = this.userService.getUserInfo();
+    this.adsService.getAds().subscribe((res) => {
+      res.data.forEach((ad: Ad) => {
+        if (this.data.length < 8 && ad.active) {
+          this.data.push(ad);
         }
       });
     });

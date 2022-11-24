@@ -13,7 +13,7 @@ import User from 'src/app/Models/user.model';
 })
 export class PostComponent implements OnInit {
   // ad?: Ad;
-  user: User | undefined;
+  user: User | undefined = this.userService.getUserInfo();
 
   posting: boolean = true;
   id = this.route.snapshot.paramMap.get('id');
@@ -35,10 +35,7 @@ export class PostComponent implements OnInit {
     active: true,
     begin: new Date(),
   };
-
   ngOnInit(): void {
-    this.user = this.userService.getUserInfo();
-    console.log("this.user: ", this.user);
     if (this.id != null) {
       this.posting = false;
       this.adsService.getAd(this.id).subscribe((result) => {
@@ -47,22 +44,22 @@ export class PostComponent implements OnInit {
       });
     }
   }
-
   post(): void {
     console.log('hello');
     console.log(this.posting);
-    if (this.posting) {
+    if (this.posting && this.user) {
+      this.postInfo.username = this.user.username;
       this.adsService
         .createAd(this.postInfo)
         .subscribe((result) => console.log({ result }));
       console.log(this.postInfo);
-      this.router.navigate(['ads', this.postInfo.adsId]);
+      this.router.navigate(['ads']);
     } else {
       this.adsService
         .editAd(this.postInfo.adsId, this.postInfo)
         .subscribe((result) => console.log({ result }));
       console.log(this.postInfo);
-      this.router.navigate(['ads', this.postInfo.adsId]);
+      this.router.navigate(['ads']);
     }
   }
 }

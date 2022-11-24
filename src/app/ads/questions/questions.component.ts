@@ -12,13 +12,21 @@ import { AdsService } from '../../services/ads.service';
   styleUrls: ['./questions.component.css'],
 })
 export class QuestionsComponent implements OnInit {
-  @Input() user: User = {
-    username: '',
-  };
+  @Input() user: User | undefined;
   questions: Question[] = [];
   answer: string = '';
   questionForm: string = '';
-  ad: Ad | undefined;
+  @Input() ad: Ad = {
+    username: '',
+    adsId: '',
+    title: '',
+    body: '',
+    price: NaN,
+    begin: new Date(),
+    end: new Date(),
+    deliveryMethod: '',
+    active: true,
+  };
   id: string | null = this.route.snapshot.paramMap.get('id');
   constructor(
     private questionService: QuestionService,
@@ -37,14 +45,14 @@ export class QuestionsComponent implements OnInit {
   answerQuestion(qid: string) {
     this.questionService
       .answerQuestion(this.ad?.adsId, qid, this.answer)
-      .subscribe();
+      .subscribe((res) => console.log(res));
   }
   submitQuestion() {
     this.questionService
       .postQuestion(this.ad?.adsId, { question: this.questionForm })
       .subscribe((res) => {
-        if (res.status === 'Question saved') {
-          window.location.reload()
+        if (res.success) {
+          window.location.reload();
         }
       });
   }
