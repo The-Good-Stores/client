@@ -5,6 +5,7 @@ import { PostComponent } from './post/post.component';
 import { ManageComponent } from './manage/manage.component';
 import { DisplayComponent } from './display/display.component';
 import { FormsModule } from '@angular/forms';
+import { QuestionsComponent } from './questions/questions.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
     AdsListComponent,
     PostComponent,
     ManageComponent,
-    DisplayComponent
+    DisplayComponent,
+    QuestionsComponent
   ],
   imports: [
     CommonModule, 

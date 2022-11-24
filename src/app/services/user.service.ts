@@ -11,10 +11,7 @@ export class UserService {
   baseUrl = '/user';
   constructor(private http: HttpClient) {}
   register(user: User): Observable<any> {
-    return this.http.post(
-      `${environment.apiUrl}/${this.baseUrl}/register`,
-      user
-    );
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/register`, user);
   }
   login(user: User): Observable<any> {
     return this.http.post(`${environment.apiUrl}/${this.baseUrl}/login`, user);

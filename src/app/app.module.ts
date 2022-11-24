@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { QuestionsComponent } from './questions/questions.component';
+import { QuestionsComponent } from './ads/questions/questions.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { AdsModule } from './ads/ads.module';
 
 
 @NgModule({
-  declarations: [AppComponent, QuestionsComponent, NavComponent, HomeComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
