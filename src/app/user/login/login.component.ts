@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         console.log(result);
         if (result.success) {
           this.userService.setUserInfo(result.token);
-          this.router.navigate([""]);
+          this.router.navigateByUrl("/");
         } else {
           this.caution = result.status;
         }

@@ -4,13 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { QuestionsComponent } from './ads/questions/questions.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { AdsModule } from './ads/ads.module';
-
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent],
@@ -26,4 +24,4 @@ import { AdsModule } from './ads/ads.module';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

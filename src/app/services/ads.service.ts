@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,9 +19,14 @@ export class AdsService {
   }
   disableAd(adsId: string): Observable<any> {
     // TODO: Authentication
+    // return this.http.post(
+    //   `${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`,
+    //   {}
+    // );
     return this.http.post(
-      `${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`,
-      {}
+      `http://localhost:8000/api/${this.baseUrl}/disable/${adsId}`,
+      {},
+      { headers: { authentication: 'Basic ' + localStorage.getItem('token') } }
     );
   }
   activateAd(adsId: string): Observable<any> {

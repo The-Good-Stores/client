@@ -1,1 +1,47 @@
-<p>nav works!</p>
+<div class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Used Goods Stores</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="navbarCollapsed = !navbarCollapsed"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+      [ngbCollapse]="navbarCollapsed"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="ads">Current Ads</a>
+        </li>
+        <li class="nav-item" *ngIf="!user">
+          <a class="nav-link" routerLink="user/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!user">
+          <a class="nav-link" routerLink="user/register">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link" routerLink="ads/manage">Manage Your Ads</a>
+        </li>
+        <li class="nav-item">
+          <div
+            class="nav-link user-select-none pe-auto"
+            role="button"
+            *ngIf="user"
+            (click)="logout()"
+          >
+            Logout
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
