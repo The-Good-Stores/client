@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
   caution: string = '';
 
   ngOnInit(): void {}
-
   register() {
     this.userService.register(this.registerInfo).subscribe((result) => {
       console.log(result);
