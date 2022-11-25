@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class UserService {
-  baseUrl = '/user';
+  baseUrl = 'user';
   constructor(private http: HttpClient) {}
   register(user: User): Observable<any> {
     return this.http.post(
