@@ -26,13 +26,7 @@ export class UserService {
   logout(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/${this.baseUrl}/logout`);
   }
-  public isAuthenticated(): Boolean {
-    const token = localStorage.getItem('token');
-    if (token) {
-      return true;
-    }
-    return false;
-  }
+
   public setUserInfo(token: string) {
     localStorage.setItem('token', token);
   }
