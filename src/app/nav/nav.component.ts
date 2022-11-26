@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import User from '../Models/user.model';
+import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -11,10 +12,18 @@ import { UserService } from '../services/user.service';
 export class NavComponent implements OnInit {
   loggedIn: Boolean = false;
   public navbarCollapsed = true;
-  constructor(private userService: UserService, private router: Router) {
-    this.loggedIn = this.userService.isAuthenticated();
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event.constructor.name === 'NavigationEnd') {
+        this.loggedIn = this.authService.isLoggedIn;
+      }
+    });
   }
-  ngOnInit(): void {}
 
   logout() {
     console.log('object');
