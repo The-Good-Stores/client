@@ -19,7 +19,7 @@ export class UserService {
   login(user: User): Observable<any> {
     // return this.http.post(`${environment.apiUrl}/${this.baseUrl}/login`, user);
     return this.http.post(
-      `http://localhost:8000/api/${this.baseUrl}/login`,
+      `${environment.apiUrl}/${this.baseUrl}/login`,
       user, 
     );
   }

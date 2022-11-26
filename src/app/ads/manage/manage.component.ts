@@ -32,12 +32,16 @@ export class ManageComponent implements OnInit {
 
   activate(adsId: string) {
     this.adService.activateAd(adsId).subscribe((res) => {
-      console.log(res);
+      if (res.success) {
+        window.location.reload();
+      }
     });
   }
   disable(adsid: string) {
     this.adService.disableAd(adsid).subscribe((res) => {
-      console.log(res);
+      if (res.success) {
+        window.location.reload();
+      }
     });
   }
 }

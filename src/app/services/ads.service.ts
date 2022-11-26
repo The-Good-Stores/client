@@ -19,12 +19,8 @@ export class AdsService {
   }
   disableAd(adsId: string): Observable<any> {
     // TODO: Authentication
-    // return this.http.post(
-    //   `${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`,
-    //   {}
-    // );
     return this.http.post(
-      `http://localhost:8000/api/${this.baseUrl}/disable/${adsId}`,
+      `${environment.apiUrl}/${this.baseUrl}/disable/${adsId}`,
       {},
       { headers: { authentication: 'Basic ' + localStorage.getItem('token') } }
     );
@@ -33,17 +29,21 @@ export class AdsService {
     // TODO: Authentication
     return this.http.post(
       `${environment.apiUrl}/${this.baseUrl}/activate/${adsId}`,
-      {}
+      {},
+      { headers: { authentication: 'Basic ' + localStorage.getItem('token') } }
     );
   }
   editAd(adsId: string, data: Ad): Observable<any> {
     // TODO: Authentication
     return this.http.post(
       `${environment.apiUrl}/${this.baseUrl}/update/${adsId}`,
-      data
+      data,
+      { headers: { authentication: 'Basic ' + localStorage.getItem('token') } }
     );
   }
   createAd(ad: Ad): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/post`, ad);
+    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/post`, ad, {
+      headers: { authentication: 'Basic ' + localStorage.getItem('token') },
+    });
   }
 }

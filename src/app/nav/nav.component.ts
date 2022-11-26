@@ -9,11 +9,11 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  loggedIn: Boolean = false;
   public navbarCollapsed = true;
   constructor(private userService: UserService, private router: Router) {
-    this.user = this.userService.getUserInfo();
+    this.loggedIn = this.userService.isAuthenticated();
   }
-  user: User | undefined;
   ngOnInit(): void {}
 
   logout() {

@@ -22,20 +22,20 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="ads">Current Ads</a>
         </li>
-        <li class="nav-item" *ngIf="!user">
+        <li class="nav-item" *ngIf="!loggedIn">
           <a class="nav-link" routerLink="user/login">Login</a>
         </li>
-        <li class="nav-item" *ngIf="!user">
+        <li class="nav-item" *ngIf="!loggedIn">
           <a class="nav-link" routerLink="user/register">Register</a>
         </li>
-        <li class="nav-item" *ngIf="user">
+        <li class="nav-item" *ngIf="loggedIn">
           <a class="nav-link" routerLink="ads/manage">Manage Your Ads</a>
         </li>
         <li class="nav-item">
           <div
             class="nav-link user-select-none pe-auto"
             role="button"
-            *ngIf="user"
+            *ngIf="loggedIn"
             (click)="logout()"
           >
             Logout
