@@ -17,11 +17,11 @@ export class UserService {
     );
   }
   login(user: User): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.baseUrl}/login`, user);
-    // return this.http.post(
-    //   `http://localhost:8000/api/${this.baseUrl}/login`,
-    //   user
-    // );
+    // return this.http.post(`${environment.apiUrl}/${this.baseUrl}/login`, user);
+    return this.http.post(
+      `${environment.apiUrl}/${this.baseUrl}/login`,
+      user, 
+    );
   }
   logout(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/${this.baseUrl}/logout`);
@@ -35,6 +35,9 @@ export class UserService {
   }
   public setUserInfo(token: string) {
     localStorage.setItem('token', token);
+  }
+  getToken() {
+    return localStorage.getItem('token');
   }
   public getUserInfo() {
     const token = localStorage.getItem('token');

@@ -14,19 +14,12 @@ export class QuestionService {
       `${environment.apiUrl}/${this.baseUrl}/add-question/${adsId}`,
       question
     );
-    // return this.http.post(
-    //   `http://localhost:8000/api/${this.baseUrl}/add-question/${adsId}`,
-    //   question
-    // )
   }
   answerQuestion(adsId: string, qid: string, answer: string): Observable<any> {
     return this.http.post(
       `${environment.apiUrl}/${this.baseUrl}/add-answer/${adsId}/${qid}`,
-      {answer}
+      { answer },
+      { headers: { authentication: 'Basic ' + localStorage.getItem('token') } }
     );
-    // return this.http.post(
-    //   `http://localhost:8000/api/${this.baseUrl}/add-answer/${adsId}/${qid}`,
-    //   answer
-    // );
   }
 }
