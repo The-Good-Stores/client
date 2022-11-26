@@ -34,7 +34,7 @@ export class UserService {
     return localStorage.getItem('token');
   }
   public getUserInfo() {
-    const token = localStorage.getItem('token');
+    const token = this.getToken()
     if (token != null) {
       let decode: any = jwt_decode(token);
       const user: User = decode.user;

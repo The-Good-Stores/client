@@ -25,13 +25,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.loginInfo).subscribe((result) => {
-      console.log(result);
       if (result.success) {
         this.userService.setUserInfo(result.token);
         this.authService.isLoggedIn = true;
         this.router.navigateByUrl('/');
       } else {
-        console.log(result.status);
         this.caution = result.status;
       }
     });

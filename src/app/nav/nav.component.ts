@@ -14,22 +14,17 @@ export class NavComponent implements OnInit {
   public navbarCollapsed = true;
   constructor(
     private userService: UserService,
-    private router: Router,
     private authService: AuthService
   ) {}
   ngOnInit(): void {
-    this.router.events.subscribe((event) => {
-      if (event.constructor.name === 'NavigationEnd') {
-        this.loggedIn = this.authService.isLoggedIn;
-      }
-    });
+    this.loggedIn = this.authService.isAuthenticated();
   }
 
   logout() {
-    console.log('object');
     this.userService.logout().subscribe((res) => {
       if (res.success) {
         this.userService.clearUserInfo();
+        this.authService.isLoggedIn = false;
         window.location.reload();
       }
     });
