@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import User from '../Models/user.model';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
@@ -19,8 +19,8 @@ export class NavComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
-      console.log(event.constructor.name);
-      if (event.constructor.name === 'NavigationEnd') {
+      console.log(event instanceof NavigationEnd);
+      if (event instanceof NavigationEnd) {
         this.loggedIn = this.authService.isLoggedIn;
       }
     });
