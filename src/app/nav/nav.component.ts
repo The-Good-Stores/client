@@ -19,7 +19,6 @@ export class NavComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
-      console.log(event instanceof NavigationEnd);
       if (event instanceof NavigationEnd) {
         this.loggedIn = this.authService.isLoggedIn;
       }
