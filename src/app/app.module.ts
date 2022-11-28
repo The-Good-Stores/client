@@ -9,9 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { AdsModule } from './ads/ads.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

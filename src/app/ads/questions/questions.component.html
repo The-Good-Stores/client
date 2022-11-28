@@ -33,7 +33,8 @@
                           {{ q.question }}
                         </p>
                         <div *ngIf="user && user.username === ad?.username">
-                          <form *ngIf="!q.answer"
+                          <form
+                            *ngIf="!q.answer"
                             #answerForm="ngForm"
                             class="form-outline w-100"
                             (ngSubmit)="answerQuestion(q.questionId)"

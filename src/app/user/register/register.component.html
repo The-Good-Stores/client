@@ -18,6 +18,19 @@
 
                 <form #registerForm="ngForm" (ngSubmit)="register()">
                   <div class="form-outline mb-4">
+                    <div
+                      *ngIf="
+                        username.invalid && (username.dirty || username.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <p *ngIf="username.errors?.['required']">
+                        Username is required.
+                      </p>
+                      <p *ngIf="username.errors?.['minlength']">
+                        Username must be at least 4 characters long.
+                      </p>
+                    </div>
                     <input
                       #username="ngModel"
                       [(ngModel)]="registerInfo.username"
@@ -26,10 +39,19 @@
                       name="username"
                       class="form-control form-control-lg"
                       required
+                      minlength="4"
                     />
                     <label class="form-label" for="username">Username</label>
                   </div>
                   <div class="form-outline mb-4">
+                    <div
+                      *ngIf="email.invalid && (email.dirty || email.touched)"
+                      class="text-danger"
+                    >
+                      <p *ngIf="email.errors?.['required']">
+                        Email is required.
+                      </p>
+                    </div>
                     <input
                       #email="ngModel"
                       [(ngModel)]="registerInfo.email"
@@ -43,6 +65,19 @@
                   </div>
 
                   <div class="form-outline mb-4">
+                    <div
+                    *ngIf="
+                      password.invalid && (password.dirty || password.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <p *ngIf="password.errors?.['required']">
+                      Password is required.
+                    </p>
+                    <p *ngIf="password.errors?.['minlength']">
+                      Password must be at least 8 characters long.
+                    </p>
+                  </div>
                     <input
                       #password="ngModel"
                       [(ngModel)]="registerInfo.password"
@@ -50,7 +85,7 @@
                       id="password"
                       name="password"
                       class="form-control form-control-lg"
-                      required
+                      required minlength="8"
                     />
                     <label class="form-label" for="password">Password</label>
                   </div>
@@ -81,7 +116,7 @@
 
                   <p class="text-center text-muted mt-5 mb-0">
                     Have already an account?
-                    <a href="/login" class="fw-bold text-body"
+                    <a href="user/login" class="fw-bold text-body"
                       ><u>Login here</u></a
                     >
                   </p>

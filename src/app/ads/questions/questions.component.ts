@@ -45,7 +45,11 @@ export class QuestionsComponent implements OnInit {
   answerQuestion(qid: string) {
     this.questionService
       .answerQuestion(this.ad?.adsId, qid, this.answer)
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => {
+        if (res.success) {
+          window.location.reload();
+        }
+      });
   }
   submitQuestion() {
     this.questionService
