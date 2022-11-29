@@ -1,0 +1,95 @@
+<div>
+  <section class="vh-100 bg-image" style="background-image: url(assets/images/bg.jpg)">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-md-7 col-xl-6">
+            <div class="card" style="border-radius: 15px">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">
+                  Hello, Post Your Used good!
+                </h2>
+                <form #postForm="ngForm" (ngSubmit)="post()">
+                  <div class="form-outline mb-4">
+                    <input
+                      #title="ngModel"
+                      [(ngModel)]="postInfo.title"
+                      type="text"
+                      id="title"
+                      name="title"
+                      class="form-control form-control-md"
+                      placeholder="Title"
+                      required
+                    />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <textarea
+                      #body="ngModel"
+                      [(ngModel)]="postInfo.body"
+                      class="form-control form-control-md"
+                      name="body"
+                      placeholder="Your good description"
+                      id="body"
+                      style="height: 100px"
+                    ></textarea>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      #price="ngModel"
+                      [(ngModel)]="postInfo.price"
+                      type="number"
+                      id="price"
+                      step="0.01"
+                      name="price"
+                      class="form-control form-control-md"
+                      placeholder="99.99"
+                      required
+                    />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      #end="ngModel"
+                      [ngModel]="postInfo.end | date: 'YYYY-MM-dd'"
+                      (ngModelChange)="postInfo.end = $event"
+                      type="date"
+                      id="end"
+                      name="end"
+                      class="form-control form-control-md"
+                      required
+                    />
+                    <label class="form-label" for="end"
+                      >When the ads end?</label
+                    >
+                  </div>
+                  <div class="form-outline mb-4">
+                    <select
+                      class="form-select"
+                      name="deliveryMethod"
+                      [(ngModel)]="postInfo.deliveryMethod"
+                    >
+                      <option selected>Delivery Method</option>
+                      <option value="Delivery by Seller">
+                        Delivery by Seller
+                      </option>
+                      <option value="Curbside pickup">Curbside pickup</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button
+                      type="submit"
+                      class="btn btn-success btn-block btn-md gradient-custom-4 text-body"
+                    >
+                      Post!
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
