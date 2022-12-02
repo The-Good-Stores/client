@@ -10,4 +10,5 @@ export default interface Ad {
   active: boolean;
   createdAt?: Date;
   updatedAt?: Date;
+  imgUrl: string;
 }
