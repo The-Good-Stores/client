@@ -80,7 +80,7 @@ export class PostComponent implements OnInit {
     console.log(this.postInfo);
     this.imgUploadService
       .imgUpload(this.cardImageBase64)
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => console.log(res.data));
 
     if (this.posting && this.user) {
       this.postInfo.username = this.user.username;
