@@ -24,9 +24,7 @@ export class DisplayComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.adsService.getAd(this.id).subscribe((result) => {
-      console.log({ result });
       this.ad = result.data;
-      console.log({ ad1: this.ad });
     });
     this.user = this.userService.getUserInfo();
   }
