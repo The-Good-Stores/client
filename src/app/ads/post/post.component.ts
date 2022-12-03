@@ -53,8 +53,6 @@ export class PostComponent implements OnInit {
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
       const max_size = 20971520;
-      const max_height = 15200;
-      const max_width = 25600;
       if (fileInput.target.files[0].size > max_size) {
         this.imageError = 'Maximum size allowed is ' + max_size / 1000 + 'Mb';
 
@@ -77,23 +75,25 @@ export class PostComponent implements OnInit {
     return;
   }
   async post() {
-    this.imgUploadService.imgUpload(this.cardImageBase64).subscribe((res) => {
-      console.log(res.success);
-      this.postInfo.imgUrl = res.data.url;
-      if (this.posting && this.user && res.success) {
-        this.postInfo.username = this.user.username;
-        this.adsService
-          .createAd(this.postInfo)
-          .subscribe((result) => console.log({ result }));
-        console.log(this.postInfo);
-        this.router.navigate(['ads']);
-      } else {
-        this.adsService
-          .editAd(this.postInfo.adsId, this.postInfo)
-          .subscribe((result) => console.log({ result }));
-        console.log(this.postInfo);
-        this.router.navigate(['ads']);
-      }
-    });
+    if (this.posting) {
+      this.imgUploadService.imgUpload(this.cardImageBase64).subscribe((res) => {
+        console.log(res.success);
+        if (this.user && res.success) {
+          this.postInfo.username = this.user.username;
+          this.postInfo.imgUrl = res.data.url;
+          this.adsService
+            .createAd(this.postInfo)
+            .subscribe((result) => console.log({ result }));
+          console.log(this.postInfo);
+          this.router.navigate(['ads']);
+        }
+      });
+    } else {
+      this.adsService
+        .editAd(this.postInfo.adsId, this.postInfo)
+        .subscribe((result) => console.log({ result }));
+      console.log(this.postInfo);
+      this.router.navigate(['ads']);
+    }
   }
 }

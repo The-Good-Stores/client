@@ -28,6 +28,7 @@
                   <div class="form-outline mb-4">
                     <p>{{ imageError }}</p>
                     <input
+                      *ngIf="posting"
                       type="file"
                       name="Upload"
                       class="form-control form-control-md"
