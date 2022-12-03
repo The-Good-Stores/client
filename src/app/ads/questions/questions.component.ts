@@ -26,6 +26,7 @@ export class QuestionsComponent implements OnInit {
     end: new Date(),
     deliveryMethod: '',
     active: true,
+    imgUrl: '',
   };
   id: string | null = this.route.snapshot.paramMap.get('id');
   constructor(
