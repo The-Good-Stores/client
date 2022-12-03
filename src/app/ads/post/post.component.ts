@@ -76,25 +76,24 @@ export class PostComponent implements OnInit {
     }
     return;
   }
-  async post(): Promise<void> {
-    console.log(this.postInfo);
+  async post() {
     this.imgUploadService.imgUpload(this.cardImageBase64).subscribe((res) => {
+      console.log(res.success);
       this.postInfo.imgUrl = res.data.url;
+      if (this.posting && this.user && res.success) {
+        this.postInfo.username = this.user.username;
+        this.adsService
+          .createAd(this.postInfo)
+          .subscribe((result) => console.log({ result }));
+        console.log(this.postInfo);
+        this.router.navigate(['ads']);
+      } else {
+        this.adsService
+          .editAd(this.postInfo.adsId, this.postInfo)
+          .subscribe((result) => console.log({ result }));
+        console.log(this.postInfo);
+        this.router.navigate(['ads']);
+      }
     });
-
-    if (this.posting && this.user) {
-      this.postInfo.username = this.user.username;
-      this.adsService
-        .createAd(this.postInfo)
-        .subscribe((result) => console.log({ result }));
-      console.log(this.postInfo);
-      this.router.navigate(['ads']);
-    } else {
-      this.adsService
-        .editAd(this.postInfo.adsId, this.postInfo)
-        .subscribe((result) => console.log({ result }));
-      console.log(this.postInfo);
-      this.router.navigate(['ads']);
-    }
   }
 }

@@ -1,45 +1,43 @@
 <div *ngFor="let ad of data">
-    <div class="row justify-content-center mb-3">
-      <div class="col-md-12 col-xl-10">
-        <div class="card shadow-0 border rounded-3">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
-                    class="w-100"
-                  />
-                  <a href="#!">
-                    <div class="hover-overlay">
-                      <div
-                        class="mask"
-                        style="background-color: rgba(253, 253, 253, 0.15)"
-                      ></div>
-                    </div>
-                  </a>
-                </div>
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-12 col-xl-10">
+      <div class="card shadow-0 border rounded-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+              <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                <img [src]="ad.imgUrl" class="w-100" />
+                <a href="#!">
+                  <div class="hover-overlay">
+                    <div
+                      class="mask"
+                      style="background-color: rgba(253, 253, 253, 0.15)"
+                    ></div>
+                  </div>
+                </a>
               </div>
-              <div class="col-md-6 col-lg-6 col-xl-6">
-                <h5>{{ ad.title }}</h5>
-                <p class="text-truncate mb-4 mb-md-0">{{ ad.body }}</p>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6">
+              <h5>{{ ad.title }}</h5>
+              <p class="text-truncate mb-4 mb-md-0">{{ ad.body }}</p>
+            </div>
+            <div
+              class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start"
+            >
+              <div class="d-flex flex-row align-items-center mb-1">
+                <p class="mb-1 me-1 fs-4">{{ ad.price | currency }}</p>
               </div>
-              <div
-                class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start"
-              >
-                <div class="d-flex flex-row align-items-center mb-1">
-                  <p class="mb-1 me-1 fs-4">{{ ad.price | currency }}</p>
-                </div>
-                <p class="text-success fs-6">
-                  Delivery Method: {{ ad.deliveryMethod }}
+              <p class="text-success fs-6">
+                Delivery Method: {{ ad.deliveryMethod }}
+              </p>
+              <p class="text-primary fs-6">By {{ ad.username }}</p>
+              <div class="d-flex flex-column mt-4">
+                <a class="btn btn-primary btn-sm" href="ads/{{ ad.adsId }}">
+                  Details
+                </a>
+                <p class="fs-6">
+                  Posted on: {{ ad.begin | date : "d MMMM y" }}
                 </p>
-                <p class="text-primary fs-6">By {{ ad.username }}</p>
-                <div class="d-flex flex-column mt-4">
-                  <a class="btn btn-primary btn-sm" href="ads/{{ ad.adsId }}">
-                    Details
-                  </a>
-                  <p class="fs-6">Posted on: {{ ad.begin | date:'d MMMM y' }}</p>
-                </div>
               </div>
             </div>
           </div>
@@ -47,4 +45,4 @@
       </div>
     </div>
   </div>
-  
+</div>
