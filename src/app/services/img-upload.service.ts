@@ -10,9 +10,9 @@ export class ImgUploadService {
   constructor(private http: HttpClient) {}
 
   imgUpload(img: string): Observable<any> {
-    return this.http.post(
-      `https://api.imgbb.com/1/upload?expiration=600&key=${environment.filestackAPI}`,
-      { image: img }
-    );
+    let body = new FormData();
+    body.set('key', environment.filestackAPI);
+    body.append('image', img.split(',')[1]);
+    return this.http.post(`https://api.imgbb.com/1/upload`, body);
   }
 }

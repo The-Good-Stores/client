@@ -76,11 +76,11 @@ export class PostComponent implements OnInit {
     }
     return;
   }
-  post(): void {
+  async post(): Promise<void> {
     console.log(this.postInfo);
-    this.imgUploadService
-      .imgUpload(this.cardImageBase64)
-      .subscribe((res) => console.log(res.data));
+    this.imgUploadService.imgUpload(this.cardImageBase64).subscribe((res) => {
+      this.postInfo.imgUrl = res.data.url;
+    });
 
     if (this.posting && this.user) {
       this.postInfo.username = this.user.username;
