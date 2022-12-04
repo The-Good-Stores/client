@@ -1,11 +1,11 @@
+<div class="py-5"></div>
 <div>
   <div class="text-center" *ngIf="show">
     <p class="">You dont have any acive advertisement right now</p>
     <p class="">Create One?</p>
   </div>
-
   <div class="d-flex justify-content-center">
-    <a class="btn btn-primary btn-lg rounded-pill m-5" href="/ads/post"
+    <a class="btn btn-primary btn-lg rounded-pill m-5 fw-bolder" href="/ads/post"
       >Post a Product</a
     >
   </div>
@@ -17,10 +17,7 @@
             <div class="row">
               <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                 <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
-                    class="w-100"
-                  />
+                  <img [src]="ad.imgUrl" class="w-100" />
                   <a href="#!">
                     <div class="hover-overlay">
                       <div

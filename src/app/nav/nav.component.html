@@ -1,4 +1,8 @@
-<div class="navbar navbar-expand-lg navbar-light bg-light">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+/>
+<div class="navbar navbar-expand-lg navbar-dark bg-dark text-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Used Goods Stores</a>
     <button
@@ -23,10 +27,10 @@
           <a class="nav-link" routerLink="ads">Current Ads</a>
         </li>
         <li class="nav-item" *ngIf="!loggedIn">
-          <a class="nav-link" routerLink="user/login">Login</a>
-        </li>
-        <li class="nav-item" *ngIf="!loggedIn">
           <a class="nav-link" routerLink="user/register">Register</a>
+        </li>
+                <li class="nav-item" *ngIf="!loggedIn">
+          <a class="nav-link" routerLink="user/login">Login&nbsp;<i class="fa fa-sign-in"></i></a>
         </li>
         <li class="nav-item" *ngIf="loggedIn">
           <a class="nav-link" routerLink="ads/manage">Manage Your Ads</a>
@@ -38,7 +42,7 @@
             *ngIf="loggedIn"
             (click)="logout()"
           >
-            Logout
+            Logout&nbsp;<i class="fa fa-sign-out"></i>
           </div>
         </li>
       </ul>
