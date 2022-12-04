@@ -9,9 +9,16 @@
           <div class="col-12 col-md-9 col-md-7 col-xl-6">
             <div class="card" style="border-radius: 15px">
               <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">
-                  Hello, Post Your Used good!
-                </h2>
+                <div *ngIf="posting">
+                  <h2 class="text-uppercase text-center mb-5">
+                    Hello, Post Your Used good!
+                  </h2>
+                </div>
+                <div *ngIf="!posting">
+                  <h2 class="text-uppercase text-center mb-5">
+                    Hello, Edit Your Used good!
+                  </h2>
+                </div>
                 <form #postForm="ngForm" (ngSubmit)="post()">
                   <div class="form-outline mb-4">
                     <input
@@ -91,11 +98,19 @@
 
                   <div class="d-flex justify-content-center">
                     <button
+                      *ngIf="posting"
                       type="submit"
                       class="btn btn-success btn-block btn-md gradient-custom-4 text-light"
                     >
                       Post Now
                     </button>
+                    <button
+                    *ngIf="!posting"
+                    type="submit"
+                    class="btn btn-success btn-block btn-md gradient-custom-4 text-light"
+                  >
+                    Edit Now
+                  </button>
                   </div>
                 </form>
               </div>
