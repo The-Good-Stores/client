@@ -1,5 +1,7 @@
+<div class="py-3 bg-light"></div> 
+<div class="py-5 bg-light">
 <div *ngFor="let ad of data">
-  <div class="row justify-content-center mb-3">
+  <div class="row justify-content-center mb-3 py-3">
     <div class="col-md-12 col-xl-10">
       <div class="card shadow-0 border rounded-3">
         <div class="card-body">
@@ -18,7 +20,7 @@
               </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-6">
-              <h5>{{ ad.title }}</h5>
+              <h5 class="fw-bold">{{ ad.title }}</h5>
               <p class="text-truncate mb-4 mb-md-0">{{ ad.body }}</p>
             </div>
             <div
@@ -45,4 +47,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
