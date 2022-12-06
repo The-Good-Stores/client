@@ -5,5 +5,6 @@ export default interface Question {
   answer: string;
   createdAt?: Date;
   updatedAt?: Date;
+  timeElapsed?: String; // what I coded
 }
 
