@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  //showingUsername: User | undefined = this.userService.getUserInfo()?.username;
   loggedIn: Boolean = false;
   public navbarCollapsed = true;
   constructor(
@@ -24,7 +25,9 @@ export class NavComponent implements OnInit {
         this.loggedIn = this.authService.isLoggedIn;
       }
     });
+    
   }
+
   logout() {
     this.userService.logout().subscribe((res) => {
       if (res.success) {

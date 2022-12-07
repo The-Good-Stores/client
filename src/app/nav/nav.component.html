@@ -1,27 +1,13 @@
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
 <div class="navbar navbar-expand-lg navbar-dark bg-dark text-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Used Goods Stores</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      (click)="navbarCollapsed = !navbarCollapsed"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" (click)="navbarCollapsed = !navbarCollapsed" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="collapse navbar-collapse"
-      id="navbarNav"
-      [ngbCollapse]="navbarCollapsed"
-    >
+    <div class="collapse navbar-collapse" id="navbarNav" [ngbCollapse]="navbarCollapsed">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" routerLink="ads">Current Ads</a>
@@ -29,21 +15,31 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
         <li class="nav-item" *ngIf="!loggedIn">
           <a class="nav-link" routerLink="user/register">Register</a>
         </li>
-                <li class="nav-item" *ngIf="!loggedIn">
+        <li class="nav-item" *ngIf="!loggedIn">
           <a class="nav-link" routerLink="user/login">Login&nbsp;<i class="fa fa-sign-in"></i></a>
         </li>
+
         <li class="nav-item" *ngIf="loggedIn">
           <a class="nav-link" routerLink="ads/manage">Manage Your Ads</a>
         </li>
         <li class="nav-item">
-          <div
-            class="nav-link user-select-none pe-auto"
-            role="button"
-            *ngIf="loggedIn"
-            (click)="logout()"
-          >
+          <div class="nav-link user-select-none pe-auto" role="button" *ngIf="loggedIn" (click)="logout()">
             Logout&nbsp;<i class="fa fa-sign-out"></i>
           </div>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mt-auto mt-lg-0">
+        <li class="nav-item" *ngIf="!loggedIn">
+          <p class="guest" style="font-size: 20px;"><img class="rounded-circle shadow-1-strong me-3"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="avatar"
+              width="30" height="30" />Guest</p>
+        </li>
+
+        <li class="nav-item" *ngIf="loggedIn">
+          <p class="username" style="font-size: 20px;"><img class="rounded-circle shadow-1-strong me-3"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="avatar"
+              width="30" height="30" />{{ showingUsername }}</p>
         </li>
       </ul>
     </div>
