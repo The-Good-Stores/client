@@ -45,6 +45,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
             Logout&nbsp;<i class="fa fa-sign-out"></i>
           </div>
         </li>
+        <li class="nav-item" *ngIf="loggedIn">
+          <a class="nav-link">{{username}}</a>
+        </li>
       </ul>
     </div>
   </div>
