@@ -2,13 +2,13 @@
 
 <div class="navbar navbar-expand-lg navbar-dark bg-dark text-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Used Goods Stores</a>
+    <a class="navbar-brand" style="margin-right: 0px;" href="/">Used Goods Stores</a>
     <button class="navbar-toggler" type="button" (click)="navbarCollapsed = !navbarCollapsed" data-bs-toggle="collapse"
       data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav" [ngbCollapse]="navbarCollapsed">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="ads">Current Ads</a>
         </li>
@@ -29,7 +29,7 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav ms-auto mt-auto mt-lg-0">
+      <ul class="navbar-nav" style="margin-left: 16px;">
         <li class="nav-item" *ngIf="!loggedIn">
           <p class="guest" style="font-size: 20px;"><img class="rounded-circle shadow-1-strong me-3"
               src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="avatar"
