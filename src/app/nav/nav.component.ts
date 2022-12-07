@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
 export class NavComponent implements OnInit {
   //showingUsername: User | undefined = this.userService.getUserInfo()?.username;
   loggedIn: Boolean = false;
+  username: String | undefined;
   public navbarCollapsed = true;
   constructor(
     private userService: UserService,
@@ -23,6 +24,7 @@ export class NavComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.loggedIn = this.authService.isLoggedIn;
+        this.username = this.userService.getUserInfo()?.username;
       }
     });
     
