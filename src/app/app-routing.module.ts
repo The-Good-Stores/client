@@ -17,6 +17,7 @@ const routes: Routes = [
   {
     path: 'user/login',
     component: LoginComponent,
+    title: 'Login',
   },
   {
     path: 'user/register',
@@ -39,6 +40,7 @@ const routes: Routes = [
   {
     path: 'ads/:id',
     component: DisplayComponent,
+
   },
   {
     path: 'ads/edit/:id',
