@@ -20,9 +20,8 @@ export class DisplayComponent implements OnInit {
     public adsService: AdsService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router
   ) {}
-  ngOnInit(): void {
+  ngOnInit() {
     this.adsService.getAd(this.id).subscribe((result) => {
       this.ad = result.data;
     });

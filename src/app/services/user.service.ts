@@ -16,12 +16,20 @@ export class UserService {
       user
     );
   }
-  login(user: User): Observable<any> {
-    // return this.http.post(`${environment.apiUrl}/${this.baseUrl}/login`, user);
-    return this.http.post(
-      `${environment.apiUrl}/${this.baseUrl}/login`,
-      user, 
-    );
+  login(
+    user: User
+  ): Observable<{
+    success: boolean;
+    status: string;
+    token: string;
+    username: string;
+  }> {
+    return this.http.post<{
+      success: boolean;
+      status: string;
+      token: string;
+      username: string;
+    }>(`${environment.apiUrl}/${this.baseUrl}/login`, user);
   }
   logout(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/${this.baseUrl}/logout`);
@@ -34,7 +42,7 @@ export class UserService {
     return localStorage.getItem('token');
   }
   public getUserInfo() {
-    const token = this.getToken()
+    const token = this.getToken();
     if (token != null) {
       let decode: any = jwt_decode(token);
       const user: User = decode.user;

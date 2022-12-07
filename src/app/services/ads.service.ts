@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import Ad from '../Models/ads.model';
+import Question from '../Models/question.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +12,17 @@ export class AdsService {
   baseUrl = 'ads';
   constructor(private http: HttpClient) {}
   //Get ALL ads from database
-  getAds(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/${this.baseUrl}/all`);
+  getAds(): Observable<{ status: string; data: Ad[] }> {
+    return this.http.get<{ status: string; data: Ad[] }>(
+      `${environment.apiUrl}/${this.baseUrl}/all`
+    );
   }
-  getAd(adsId: string): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/${this.baseUrl}/${adsId}`);
+  getAd(
+    adsId: string
+  ): Observable<{ status: string; data: Ad; question: Question[] }> {
+    return this.http.get<{ status: string; data: Ad; question: Question[] }>(
+      `${environment.apiUrl}/${this.baseUrl}/${adsId}`
+    );
   }
   disableAd(adsId: string): Observable<any> {
     // TODO: Authentication
