@@ -1,13 +1,19 @@
 <div class="py-3"></div>
 <div class="">
-  <section class="vh-80">
+  <section class="vh-80 bg-image"
+  style="
+      background-image: url('https://wallpapercave.com/wp/wp6942356.png');
+      width: 100%;
+      height:auto;
+    "
+  >
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-4">
           <img src="/assets/images/logo.png" class="img-fluid" alt="logo" />
         </div>
         <p class="text-center fs-3 text-danger">{{ caution }}</p>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="col-md-8 col-lg-6 col-xl-4">
           <form id="login" #loginForm="ngForm" (ngSubmit)="login()">
             <!-- Email input -->
             <div class="form-outline mb-4">
@@ -22,7 +28,7 @@
             </div>
 
             <!-- Password input -->
-            <div class="form-outline mb-3">
+            <div class="form-outline mb-4">
               <input
                 #password="ngModel"
                 [(ngModel)]="loginInfo.password"
@@ -33,7 +39,7 @@
               />
             </div>
 
-            <div class="text-center text-lg-start mt-4 pt-2 ">
+            <div class="d-flex justify-content-center">
               <button
                 type="submit"
                 class="btn btn-primary btn-lg"
@@ -41,11 +47,13 @@
               >
                 Login
               </button>
-              <p class="small fw-bold mt-2 pt-1 mb-0 text-muted">
+            </div>
+
+              <p class="text-center text-muted mt-5 mb-0 fw-bold">
                 Don't have an account?
                 <a href="/user/register" class="link-danger">Register</a>
               </p>
-            </div>
+
           </form>
         </div>
       </div>
