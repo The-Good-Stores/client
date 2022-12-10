@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ManageComponent implements OnInit {
   data: Ad[] = [];
+  unanswerdCountByAdsId: Map<string, number> = new Map();
   show: boolean = false;
   user: User | undefined;
   constructor(
@@ -21,7 +22,11 @@ export class ManageComponent implements OnInit {
     this.adService.getAds().subscribe((res) => {
       res.data.forEach((ad: Ad) => {
         if (ad.username === this.user?.username) {
-          this.data?.push(ad);
+          this.data.push(ad);
+          this.adService.getAd(ad.adsId).subscribe((res) => {
+            const countWithoutAnswer = res.question.filter(q => q.answer === undefined).length;
+            this.unanswerdCountByAdsId.set(ad.adsId, countWithoutAnswer);
+          });
         }
       });
     });
