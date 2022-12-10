@@ -33,18 +33,26 @@
                 <p class="text-truncate mb-4 mb-md-0">{{ ad.body }}</p>
               </div>
               <div
-                class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start"
+                class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none order-first"
               >
                 <div class="d-flex flex-row align-items-center mb-1">
                   <h4 class="mb-1 me-1">{{ ad.price | currency }}</h4>
                 </div>
-                <h6 class="text-success">
-                  Delivery Method: {{ ad.deliveryMethod }}
+                <h6 *ngIf="ad.active; else ad_inactive" class="text-primary">
+                  Status: active
                 </h6>
-                <h6 *ngIf="ad.active" class="text-success">Status: active</h6>
+                <ng-template #ad_inactive>
+                  <h6 class="text-muted">Status: not active</h6>
+                </ng-template>
 
-                <h6 *ngIf="!ad.active" class="text-danger">
-                  Status: not active
+                <h6 *ngIf="unanswerdCountByAdsId.has(ad.adsId)">
+                  <span
+                    *ngIf="0 < unanswerdCountByAdsId.get(ad.adsId)!"
+                    class="text-danger"
+                  >
+                    {{ unanswerdCountByAdsId.get(ad.adsId) }} unanswered
+                    questions
+                  </span>
                 </h6>
 
                 <div class="d-flex flex-column mt-4">
