@@ -27,7 +27,6 @@ export class NavComponent implements OnInit {
         this.showingUsername = this.userService.getUserInfo()?.username;
       }
     });
-    
   }
 
   logout() {
