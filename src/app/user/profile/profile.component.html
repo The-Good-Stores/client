@@ -1,0 +1,129 @@
+<div class="py-5">
+    <section
+      class="vh-100 bg-image"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1606075920560-c43aa8659a3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+        width: 100%;
+        height:auto;
+      "
+    >
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-110">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5 fw-bold">
+                    Update your profile
+                  </h2>
+                  <p class="fs-3 text-danger text-center">{{ caution }}</p>
+  
+                  <form #registerForm="ngForm" (ngSubmit)="update()">
+                    <div class="form-outline mb-4">
+                      <div
+                        *ngIf="
+                          username.invalid && (username.dirty || username.touched)
+                        "
+                        class="text-danger"
+                      >
+                        <p *ngIf="username.errors?.['required']">
+                          Username is required.
+                        </p>
+                        <p *ngIf="username.errors?.['minlength']">
+                          Username must be at least 4 characters long.
+                        </p>
+                      </div>
+                      <input
+                        #username="ngModel"
+                        [(ngModel)]="updateInfo.username"
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-control form-control-lg"
+                        required
+                        minlength="4"
+                        disabled
+                      />
+                      <label class="form-label" for="username">Username</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <div
+                        *ngIf="email.invalid && (email.dirty || email.touched)"
+                        class="text-danger"
+                      >
+                        <p *ngIf="email.errors?.['required']">
+                          Email is required.
+                        </p>
+                      </div>
+                      <input
+                        #email="ngModel"
+                        [(ngModel)]="updateInfo.email"
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control form-control-lg"
+                        required
+                      />
+                      <label class="form-label" for="email">Your Email</label>
+                    </div>
+                    <!-- Password input field -->
+
+                    <!-- <div class="form-outline mb-4">
+                      <div
+                      *ngIf="
+                        password.invalid && (password.dirty || password.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <p *ngIf="password.errors?.['required']">
+                        Password is required.
+                      </p>
+                      <p *ngIf="password.errors?.['minlength']">
+                        Password must be at least 8 characters long.
+                      </p>
+                    </div>
+                      <input
+                        #password="ngModel"
+                        [(ngModel)]="registerInfo.password"
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-control form-control-lg"
+                        required minlength="8"
+                      />
+                      <label class="form-label" for="password">Password</label>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <input
+                        #confirm_password="ngModel"
+                        [(ngModel)]="registerInfo.confirm_password"
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        class="form-control form-control-lg"
+                        required
+                      />
+                      <label class="form-label" for="confirm_password"
+                        >Repeat your password</label
+                      >
+                    </div> -->
+  
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="submit"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

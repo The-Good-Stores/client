@@ -7,6 +7,7 @@ import { PostComponent } from './ads/post/post.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './user/login/login.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
 
 const routes: Routes = [
@@ -20,12 +21,20 @@ const routes: Routes = [
     title: 'Login',
   },
   {
+    path: 'user/profile',
+    component: ProfileComponent,
+    title: 'User Profile',
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'user/register',
     component: RegisterComponent,
+    title: 'Register',
   },
   {
     path: 'ads',
     component: AdsListComponent,
+    title: 'Ads List',
   },
   {
     path: 'ads/manage',
@@ -40,7 +49,6 @@ const routes: Routes = [
   {
     path: 'ads/:id',
     component: DisplayComponent,
-
   },
   {
     path: 'ads/edit/:id',

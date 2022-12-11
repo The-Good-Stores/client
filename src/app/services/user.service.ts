@@ -16,9 +16,7 @@ export class UserService {
       user
     );
   }
-  login(
-    user: User
-  ): Observable<{
+  login(user: User): Observable<{
     success: boolean;
     status: string;
     token: string;
@@ -33,6 +31,17 @@ export class UserService {
   }
   logout(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/${this.baseUrl}/logout`);
+  }
+
+  updateProfile(updateForm: {
+    username: string;
+    email: string;
+  }): Observable<{ success: boolean; data: User }> {
+    return this.http.post<{ success: boolean; data: User }>(
+      `${environment.apiUrl}/${this.baseUrl}/edit-profile`,
+      updateForm,
+      { headers: { authentication: 'Basic ' + localStorage.getItem('token') } }
+    );
   }
 
   public setUserInfo(token: string) {
